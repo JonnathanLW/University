@@ -63,10 +63,6 @@ Control_calidad = function() {
   Stat_Name = Stat_Name %>% filter(!is.na(TIMESTAMP)) # elimino filas con fechas Na
   
 # Objetivo 4 -----------------------------------------------------------------------------
-  #     Temp_max = "TempAire_Max"
-  #     Temp_min = "TempAire_Min"
-  #     Temp_Avg = "TempAire_Avg"
-  #   }
   # BUGS PRESENTES, ALGORITMO EN DESARROLLO  
   # nombres_columnas = colnames(Stat_Name)
   # tipo_1 = c("TempAire_Max", "TempAire_Min", "TempAire_Avg")
@@ -164,18 +160,14 @@ Control_calidad = function() {
   
 # Guardar_Archivo ------------------------------------------------------------------------
   nombre_archivo = file_path_sans_ext(basename(Data))
-  Data_Save = "C:/Users/Jonna/Desktop/Hiatorico_Procesados/Procesados_Temperatura"
+  Data_Save = "C:/Users/Jonna/Desktop/Rigo/Datos_Procesando"
   Stat_Name_5min$TIMESTAMP =  as.character(Stat_Name_5min$TIMESTAMP)
   Stat_Name_5min$TIMESTAMP[!grepl(":", Stat_Name_5min$TIMESTAMP)] <- paste(Stat_Name_5min$TIMESTAMP[!grepl(":", Stat_Name_5min$TIMESTAMP)], "00:00:00")
   write.csv(Stat_Name_5min, file = file.path(Data_Save, paste(nombre_archivo, ".csv", sep = "")), row.names = FALSE)
   
 } # cierra la funcion
 
-# Guardado de archivos ----------------------------------------------------
 
 Inicio = Control_calidad ()
 
-Ind_Ruido_2 = which(Stat_Name_5min$TempAire_Max > 45 | Stat_Name_5min$TempAire_Max < -10 |
-                      Stat_Name_5min$TempAire_Min > 45 | Stat_Name_5min$TempAire_Min< -10 |
-                      Stat_Name_5min$TempAire_Avg > 45 | Stat_Name_5min$TempAire_Avg< -10)
 
