@@ -160,7 +160,7 @@ Control_calidad = function() {
   
 # Guardar_Archivo ------------------------------------------------------------------------
   nombre_archivo = file_path_sans_ext(basename(Data))
-  Data_Save = "C:/Users/Jonna/Desktop/Rigo/Datos_Procesando"
+  Data_Save = "direccion donde se va a guardar los archivos"
   Stat_Name_5min$TIMESTAMP =  as.character(Stat_Name_5min$TIMESTAMP)
   Stat_Name_5min$TIMESTAMP[!grepl(":", Stat_Name_5min$TIMESTAMP)] <- paste(Stat_Name_5min$TIMESTAMP[!grepl(":", Stat_Name_5min$TIMESTAMP)], "00:00:00")
   write.csv(Stat_Name_5min, file = file.path(Data_Save, paste(nombre_archivo, ".csv", sep = "")), row.names = FALSE)
